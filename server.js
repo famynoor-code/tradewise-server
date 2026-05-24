@@ -6,7 +6,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const TD_KEY = '0bcdf4421d744302a25dbb6217743587';
 
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.options('*', cors());
 app.use(express.json());
 
 // Health check
